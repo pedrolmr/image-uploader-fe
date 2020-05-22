@@ -1,19 +1,19 @@
 import React from 'react';
-import axios from 'axios';
+import { axiosWithAuth } from '../../utils/AxiosWithAuth';
 import { Link } from 'react-router-dom';
-import Form from './LoginForm';
+import LoginForm from './LoginForm';
 
 function Login(props) {
-  const sendCredentials = async (email, password) => {
+  const sendCredentials = async (username, password) => {
     try {
       let user;
-      if (email !== '') {
-        user = { email, password };
+      if (username !== '') {
+        user = { username, password };
       }
-      user = { email, password };
-      const res = await axios.post('/login', { ...user });
+      user = { username, password };
+      const res = await axiosWithAuth().post('/login', { ...user });
       if (res) {
-        localStorage.setItem('token', res.data.key);
+        localStorage.setItem('token', res.data.token);
         props.history.push('/');
       } else {
         console.log('error no res!!');
@@ -24,14 +24,14 @@ function Login(props) {
   };
 
   return (
-    <LoginPage>
+    <div>
       <h1>Login Page</h1>
-      <Form sendCredentials={sendCredentials} />
+      <LoginForm sendCredentials={sendCredentials} />
 
       <h4>
         Don't have an account? <Link to='/register'>Register Here</Link>
       </h4>
-    </LoginPage>
+    </div>
   );
 }
 

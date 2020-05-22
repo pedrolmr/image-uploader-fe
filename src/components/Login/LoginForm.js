@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 
 function LoginForm({ sendCredentials }) {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    sendCredentials(email, password);
+    sendCredentials(username, password);
   };
   return (
-    <FormContainer>
+    <div>
       <form onSubmit={handleSubmit}>
         <input
-          type='email'
-          placeholder='Email'
-          onChange={(e) => setEmail(e.target.value)}
-          name='email'
+          type='username'
+          placeholder='username'
+          onChange={(e) => setUsername(e.target.value)}
+          name='username'
         />
         <input
           type='password'
@@ -27,6 +27,8 @@ function LoginForm({ sendCredentials }) {
         />
         <input type='submit' value='Submit' />
       </form>
-    </FormContainer>
+    </div>
   );
 }
+
+export default LoginForm;
