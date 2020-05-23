@@ -1,9 +1,10 @@
 import React from 'react';
 import { axiosWithAuth } from '../../utils/AxiosWithAuth';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import LoginForm from './LoginForm';
 
 function Login(props) {
+  const history = useHistory();
   const sendCredentials = async (username, password) => {
     try {
       let user;
@@ -14,7 +15,7 @@ function Login(props) {
       const res = await axiosWithAuth().post('/login', { ...user });
       if (res) {
         localStorage.setItem('token', res.data.token);
-        props.history.push('/');
+        history.push('/');
       } else {
         console.log('error no res!!');
       }

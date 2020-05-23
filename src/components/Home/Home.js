@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
-function Home() {
-  const [loggedIn, setLoggedIn] = useState(false);
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      setLoggedIn(false);
-    } else {
-      setLoggedIn(true);
-    }
-  }, []);
+function Home({ loggedIn }) {
+  // const [loggedIn, setLoggedIn] = useState(false);
+  // useEffect(() => {
+  //   const token = localStorage.getItem('token');
+  //   if (!token) {
+  //     setLoggedIn(false);
+  //   } else {
+  //     setLoggedIn(true);
+  //   }
+  // }, []);
 
   return (
     <div>
@@ -19,7 +20,7 @@ function Home() {
           {loggedIn === true ? (
             <h1>You're logged in!</h1>
           ) : (
-            <Link to='/login'> Please login </Link>
+            <h1>Hi, please sign in/sign up to see content</h1>
           )}
         </li>
       </ul>
@@ -27,4 +28,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default withRouter(Home);
