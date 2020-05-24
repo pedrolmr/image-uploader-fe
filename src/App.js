@@ -9,14 +9,17 @@ import { Route, Switch } from 'react-router-dom';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
+
   useEffect(() => {
     const token = localStorage.getItem('token');
+
     if (!token) {
       setLoggedIn(false);
     } else {
       setLoggedIn(true);
     }
-  }, []);
+  }, [loggedIn]);
+
   return (
     <div className='App'>
       <NavBar loggedIn={loggedIn} />

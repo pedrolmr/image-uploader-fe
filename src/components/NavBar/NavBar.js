@@ -4,16 +4,6 @@ import { withRouter, Link } from 'react-router-dom';
 import './NavBar.css';
 
 function NavBar({ loggedIn }) {
-  //   const [loggedIn, setLoggedIn] = useState(false);
-  //   useEffect(() => {
-  //     const token = localStorage.getItem('token');
-  //     if (!token) {
-  //       setLoggedIn(false);
-  //     } else {
-  //       setLoggedIn(true);
-  //     }
-  //   }, []);
-
   return (
     <div>
       <div>

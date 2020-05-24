@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { axiosWithAuth } from '../../utils/AxiosWithAuth';
 import { Link, useHistory } from 'react-router-dom';
 import LoginForm from './LoginForm';
 
 function Login(props) {
   const history = useHistory();
+
   const sendCredentials = async (username, password) => {
     try {
       let user;

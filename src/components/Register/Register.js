@@ -1,10 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Form from './RegisterForm';
 import axios from 'axios';
 import { axiosWithAuth } from '../../utils/AxiosWithAuth';
 
 function Register(props) {
+  const history = useHistory();
   const sendCredentials = async (username, password) => {
     try {
       let user;
@@ -20,8 +21,7 @@ function Register(props) {
       ] = `Token ${res.data.token}`;
 
       localStorage.setItem('token', res.data.token);
-
-      props.history.push('/');
+      history.push('/');
     } catch (error) {
       return error;
     }
